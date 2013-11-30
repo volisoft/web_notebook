@@ -12,27 +12,19 @@
       .col-lg-12
         .panel.panel-primary
           .panel-heading
-            %h3.panel-title.navbar-collapse.collapse
+            %h3.panel-title
               %i.fa.fa-bar-chart-o
               .col-lg-1 My Notes
               %a.navbar-link{:href => '/protected/new'}
                 %strong Create
-              %form.navbar-form.navbar-right{:method =>'post', :action => '/protected/search'}
-                .input-group.form-group
-                  %label.sr-only{:for => "search"} Search}
-                  %input.form-control{:placeholder => 'Search', :type => 'text', :name => 'keyword'}
-                %button.btn.btn-default{:type => "submit"}
-                  %span.glyphicon.glyphicon-search
-
-              -#.col-lg-2.pull-right
-              -#  %form.navbar-form{:method =>'post', :action => '/protected/search'}
-              -#    %label.sr-only{:for => "search"} Search
-              -#    %input.form-control#search{:placeholder => 'Search', :type => 'text', :name => 'keyword'}
-              -#    %span
-              -#      %button.btn.btn-default{:type => "submit"}
-              -#        %span.glyphicon.glyphicon-search
-
           .panel-body
+            %form.col-lg-5{:role => 'form', :method =>'post', :action => '/protected/search'}
+              .form-group.input-group
+                %label.sr-only{:for => "search"} Search
+                %input.form-control{:placeholder => 'Search', :type => 'text', :name => 'keyword'}
+                %span.input-group-btn
+                  %button.btn.btn-default{:type => "submit"}
+                    %span.glyphicon.glyphicon-search
             %table.table
               %thead
                 %td.col-lg-9 Title
