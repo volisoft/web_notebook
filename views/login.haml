@@ -34,6 +34,8 @@
             %label.col-sm-2.control-label{:for => 'inputUserName'} Username
             .col-sm-10
               %input#inputUserName.form-control{:placeholder => 'User Name', :name => 'user[username]', :type => 'text'}
+              - if flash[:error]
+                %p.alert-danger.notice= flash[:error]
           .form-group
             %label.col-sm-2.control-label{:for => 'inputFirstName'} First Name
             .col-sm-10

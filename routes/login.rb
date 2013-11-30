@@ -33,9 +33,15 @@ class WebNotes < Sinatra::Base
 
   post '/register/?' do
     user = params['user']
-    User.create(user)
+    existing_user = User.first(User.username => params['user']['username'])
 
-    flash[:msg] = 'Registration successfully completed!'
+    if existing_user.nil?
+      User.create(user)
+      flash[:msg] = 'Registration successfully completed!'
+    else
+      flash[:error] = 'The specified name already exists. Please select a different name.'
+    end
+
     haml :login
   end
 
