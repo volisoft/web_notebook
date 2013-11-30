@@ -1,0 +1,18 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %meta{:charset => 'utf-8'}
+      %meta{:content => 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
+        %meta{:content => 'width=device-width, initial-scale=1.0', :name => 'viewport'}
+          %meta{:content => '', :name => 'description'}
+            %meta{:content => '', :name => 'author'}
+              %title= yield_content :title
+
+              %link{:href => '/css/bootstrap.css', :rel => 'stylesheet'}
+              = yield_content :styles
+  %body
+    = yield
+
+    -#%script{:src => "https://code.jquery.com/jquery-1.10.2.min.js"}
+    %script{:src => '/js/jquery.js'}
+    %script{:src => '/js/bootstrap.min.js'}

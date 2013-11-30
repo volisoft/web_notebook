@@ -1,0 +1,49 @@
+- content_for :title do
+  My Notes
+
+- content_for :styles do
+  %link{:href => '/css/notes.css', :rel => 'stylesheet'}
+
+#wrapper
+  =haml :nav_internal_part
+
+  #page-wrapper
+    .row
+      .col-lg-12
+        .panel.panel-primary
+          .panel-heading
+            %h3.panel-title.navbar-collapse.collapse
+              %i.fa.fa-bar-chart-o
+              .col-lg-1 My Notes
+              %a.navbar-link{:href => '/protected/new'}
+                %strong Create
+              %form.navbar-form.navbar-right{:method =>'post', :action => '/protected/search'}
+                .input-group.form-group
+                  %label.sr-only{:for => "search"} Search}
+                  %input.form-control{:placeholder => 'Search', :type => 'text', :name => 'keyword'}
+                %button.btn.btn-default{:type => "submit"}
+                  %span.glyphicon.glyphicon-search
+
+              -#.col-lg-2.pull-right
+              -#  %form.navbar-form{:method =>'post', :action => '/protected/search'}
+              -#    %label.sr-only{:for => "search"} Search
+              -#    %input.form-control#search{:placeholder => 'Search', :type => 'text', :name => 'keyword'}
+              -#    %span
+              -#      %button.btn.btn-default{:type => "submit"}
+              -#        %span.glyphicon.glyphicon-search
+
+          .panel-body
+            %table.table
+              %thead
+                %td.col-lg-9 Title
+                %td Created
+                %td Updated
+              %tbody
+              - @documents.each do|document|
+                %tr
+                  %td
+                    %a.navbar-link{:href => "/protected/view/#{document.id}"}= document.title
+                  %td= document.created_at.strftime("%b %d %Y")
+                  %td= document.updated_at.strftime("%b %d %Y")
+
+  =haml :footer_part

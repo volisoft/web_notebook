@@ -1,0 +1,9 @@
+development:
+#  path: "sqlite3://#{Dir.pwd}/db/development/notes.db"
+  path: 'sqlite3::memory:'
+
+test:
+  path: 'sqlite3::memory:'
+
+production:
+  path: 'postgres://bfxuphqagvdtxu:3f_0FWkW-ut8kvex-mETs_DaFx@ec2-54-204-43-200.compute-1.amazonaws.com/d9q875oo73l7ok'

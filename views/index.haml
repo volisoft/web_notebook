@@ -1,0 +1,31 @@
+- content_for :title do
+  Web Notes
+
+- content_for :styles do
+  %link{:href => 'css/styles.css', :rel => 'stylesheet'}
+
+=haml :navigation_part
+
+.jumbotron
+  .container
+    %h1 Welcome to Web Notes!
+    %p Notebook on the web. Keep your notes with you.
+    %p
+      %a.btn.btn-primary.btn-lg{:role => 'button'} Learn more &raquo;
+.container
+  .row
+    .col-md-8
+      %h2 Getting started
+      %p Using Web Notes is easy. To get started just create your personal account and you are ready to go!
+      %p Well, this is a experimental project. Don't get it seriously.
+      %p
+        You can find source code exploring github
+        %a{:href => 'https://github.com/volisoft/web_notebook.git'} repository.
+
+      -#%p
+      -#  %a.btn.btn-default{:href => '#', :role => 'button'} View details &raquo;
+    .col-md-4
+      %h2 About us
+      %p VoliSoft is a leader in home made projects production. We are already 0.01 years on the market!
+
+  =haml :footer_part

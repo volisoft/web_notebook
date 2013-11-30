@@ -1,0 +1,46 @@
+- content_for :title do
+  User Settings
+
+- content_for :styles do
+  %link{:href => '/css/notes.css', :rel => 'stylesheet'}
+
+#wrapper
+  =haml :nav_internal_part
+
+  #page-wrapper
+    .row
+      .col-lg-12
+        .panel.panel-primary
+          .panel-heading
+            %h3.panel-title
+              %i.fa.fa-bar-chart-o
+              My Settings
+          .panel-body
+            %form.form-horizontal.col-md-5{:role => 'form', :method => 'post', :action => 'save/user'}
+              %input{:name => 'user[id]', :type => 'hidden', :value => current_user.id}
+              .form-group
+                %label.col-sm-2.control-label{:for => 'inputUserName'} Username
+                .col-sm-10
+                  %input#inputUserName.form-control{:placeholder => 'User Name', :name => 'user[username]', :type => 'text', :value => current_user.username}
+              .form-group
+                %label.col-sm-2.control-label{:for => 'inputFirstName'} First Name
+                .col-sm-10
+                  %input#inputFirstName.form-control{:placeholder => 'First Name', :type => 'text', :name => 'user[first_name]', :value => current_user.first_name}
+              .form-group
+                %label.col-sm-2.control-label{:for => 'inputLastName'} Last Name
+                .col-sm-10
+                  %input#inputLastName.form-control{:placeholder => 'Last Name', :type => 'text', :name => 'user[last_name]', :value => current_user.last_name}
+              .form-group
+                %label.col-sm-2.control-label{:for => 'inputPassword'} Password
+                .col-sm-10
+                  %input#inputPassword.form-control{:placeholder => 'Password', :name => 'user[password]', :type => 'password'}
+              .form-group
+                %label.col-sm-2.control-label{:for => "inputEmail"} Email
+                .col-sm-10
+                  %input#inputEmail.form-control{:placeholder => "Email", :name => 'user[email]', :type => "email",  :value => current_user.email}
+              .form-group
+                .col-sm-offset-2.col-sm-10
+                  %button.btn-success.btn.btn-lg.btn-primary.btn-block{:type => 'submit'} Update
+                  - if flash[:msg]
+                    %p.alert-success.notice= flash[:msg]
+  =haml :footer_part

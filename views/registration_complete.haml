@@ -1,0 +1,23 @@
+- content_for :title do
+  Registration
+
+.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => '#'} Web Notes
+    .navbar-collapse.collapse
+      %form.navbar-form.navbar-right{:method =>'post'}
+        .form-group
+          %input.form-control{:placeholder => 'User name', :type => 'text', :name => 'user[username]'}
+        .form-group
+          %input.form-control{:placeholder => 'Password', :type => 'password', :name => 'user[password]'}
+        %button.btn.btn-success{:formaction => 'login', :type => 'submit'} Sign in
+
+.jumbotron
+  .container
+    %h1 Registration completed. Please log in using your credentials.

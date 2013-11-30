@@ -1,0 +1,55 @@
+- content_for :title do
+  Sign in
+
+- content_for :styles do
+  %link{:href => "/css/signin.css", :rel => "stylesheet"}
+
+  .container
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#login"} Login
+      %li
+        %a{"data-toggle" => "tab", :href => "#create"} Create Account
+    #myTabContent.tab-content
+      / login tab
+      #login.tab-pane.active.in
+        %form.form-signin{:method => 'post'}
+          %h2.form-signin-heading Please sign in
+          %input.form-control{:autofocus => "", :placeholder => 'User name', :name => 'user[username]', :type => "text"}
+            %input.form-control{:placeholder => "Password", :name => 'user[password]', :required => "", :type => "password"}
+              %label.checkbox
+                %input{:type => 'checkbox', :value => 'remember-me'}
+                  Remember me
+              %button.btn.btn-lg.btn-primary.btn-block{:type => 'submit', :formaction => '/login'} Sign in
+          - if flash[:msg]
+            %p.alert-success.notice= flash[:msg]
+          - if flash[:error]
+            %p.alert-danger.notice= flash[:error]
+      / create account tab
+      #create.tab-pane.fade.in
+        %h2.form-signin-heading Specify your credentials
+        %form.form-horizontal.col-md-7{:role => 'form', :method => 'post', :action => '/register'}
+          %input{:type => 'hidden', :name => 'redirect', :value => '/protected/notes'}
+          .form-group
+            %label.col-sm-2.control-label{:for => 'inputUserName'} Username
+            .col-sm-10
+              %input#inputUserName.form-control{:placeholder => 'User Name', :name => 'user[username]', :type => 'text'}
+          .form-group
+            %label.col-sm-2.control-label{:for => 'inputFirstName'} First Name
+            .col-sm-10
+              %input#inputFirstName.form-control{:placeholder => 'First Name', :type => 'text', :name => 'user[first_name]'}
+          .form-group
+            %label.col-sm-2.control-label{:for => 'inputLastName'} Last Name
+            .col-sm-10
+              %input#inputLastName.form-control{:placeholder => 'Last Name', :type => 'text', :name => 'user[last_name]'}
+          .form-group
+            %label.col-sm-2.control-label{:for => 'inputPassword'} Password
+            .col-sm-10
+              %input#inputPassword.form-control{:placeholder => 'Password', :name => 'user[password]', :type => 'password'}
+          .form-group
+            %label.col-sm-2.control-label{:for => "inputEmail"} Email
+            .col-sm-10
+              %input#inputEmail.form-control{:placeholder => "Email", :name => 'user[email]', :type => "email"}
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Create Account

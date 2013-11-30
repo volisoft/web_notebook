@@ -1,0 +1,20 @@
+%ul.nav.navbar-nav.navbar-right.navbar-user
+  %li.dropdown.user-dropdown
+    %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
+      %i.fa.fa-user
+      #{current_user.first_name} #{current_user.last_name}
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        %a{:href => '/protected/notes'}
+          %i.fa.fa-gear
+          My Notes
+      %li
+        %a{:href => '/protected/settings'}
+          %i.fa.fa-gear
+          Settings
+      %li.divider
+      %li
+        %a{:href => '/logout'}
+          %i.fa.fa-power-off
+          Log Out

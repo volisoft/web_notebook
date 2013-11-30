@@ -1,0 +1,7 @@
+.navbar-collapse.collapse
+  %form.navbar-form.navbar-right{:method =>'post'}
+    .form-group
+      %input.form-control{:placeholder => 'User name', :type => 'text', :name => 'user[username]'}
+    .form-group
+      %input.form-control{:placeholder => 'Password', :type => 'password', :name => 'user[password]'}
+    %button.btn.btn-success{:formaction => 'login', :type => 'submit'} Sign in

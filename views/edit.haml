@@ -1,0 +1,33 @@
+- content_for :title do
+  My Notes
+
+- content_for :styles do
+  %link{:href => '/css/notes.css', :rel => 'stylesheet'}
+
+#wrapper
+  =haml :nav_internal_part
+
+  #page-wrapper
+    .row
+      .col-lg-12
+        .panel.panel-primary
+          .panel-heading
+            %h3.panel-title
+              %i.fa.fa-bar-chart-o
+              Create note
+          .panel-body
+            %form.form-horizontal.col-md-10{:role => 'form', :method => "post"}
+              .form-group
+                %label.col-sm-2.control-label{:for => "title"} Title:
+                .col-sm-10
+                  %input#title{:name => "note[title]", :type => "text", :value => @document.title}
+              .form-group
+                %label.col-sm-2.control-label{:for => "content"} Body:
+                .col-lg-10
+                  %textarea.col-lg-10#content{:name => "note[content]", :rows => "15"}= @document.content
+              .form-group
+                .col-sm-2.col-md-offset-2
+                  %input.btn.btn-success{:type => "submit", :value => "Save", :formaction => "/protected/save/doc/#{@document.id}"}
+                  %input.btn.btn-danger{:type => "submit", :value => "Delete", :formaction => "/protected/delete/#{@document.id}"}
+
+  =haml :footer_part
