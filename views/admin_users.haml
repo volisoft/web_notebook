@@ -34,7 +34,7 @@
               - @users.each do|user|
                 %tr
                   %td
-                    %a.navbar-link{:href => "/protected/view/#{user.id}"}= user.username
+                    %a.navbar-link{:href => '#'}= user.username
                   %td= user.first_name
                   %td= user.last_name
                   %td= user.email

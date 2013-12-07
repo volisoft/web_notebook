@@ -19,7 +19,7 @@ class WebNotes < Sinatra::Base
   post '/login/?' do
     warden.authenticate!
     if session[:return_to].nil?
-      redirect '/protected/notes'
+      redirect redirect_default
     else
       redirect session[:return_to]
     end
@@ -69,7 +69,6 @@ class WebNotes < Sinatra::Base
     before path do
       warden.authenticate!
       @current_user = warden.user
-      session[:user] = warden.user
     end
   end
 
@@ -103,6 +102,7 @@ class WebNotes < Sinatra::Base
       if user.nil?
         fail!('The username does not exist.')
       elsif user.authenticate(params['user']['password'])
+        session[:user] = user
         success!(user)
       else
         fail!('Could not log in')
