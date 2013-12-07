@@ -1,0 +1,45 @@
+- content_for :title do
+  Admin Console
+
+- content_for :styles do
+  %link{:href => '/css/notes.css', :rel => 'stylesheet'}
+
+#wrapper
+  =haml :nav_internal_part
+
+  #page-wrapper
+    .row
+      .col-lg-12
+        .panel.panel-primary
+          .panel-heading
+            %h3.panel-title
+              %i.fa.fa-bar-chart-o
+              Users
+          .panel-body
+            %form.col-lg-5{:role => 'form', :method =>'post', :action => '/admin/users/search'}
+              .form-group.input-group
+                %label.sr-only{:for => "search"} Search
+                %input.form-control{:placeholder => 'Search', :type => 'text', :name => 'keyword'}
+                %span.input-group-btn
+                  %button.btn.btn-default{:type => "submit"}
+                    %span.glyphicon.glyphicon-search
+            %table.table
+              %thead
+                %td.col-lg-8 User Name
+                %td First
+                %td Last
+                %td Email
+                %td Action
+              %tbody
+              - @users.each do|user|
+                %tr
+                  %td
+                    %a.navbar-link{:href => "/protected/view/#{user.id}"}= user.username
+                  %td= user.first_name
+                  %td= user.last_name
+                  %td= user.email
+                  %td
+                    %a.navbar-link{:href => "/admin/delete/user/#{user.id}"} Delete
+
+
+  =haml :footer_part

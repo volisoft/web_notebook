@@ -15,19 +15,16 @@ class User
   include BCrypt
 
   property :id,           Serial, :key => true
-  property :email,        String
+  property :email,        String, :unique => true, :format => :email_address
   property :first_name,   String
   property :last_name,    String
-  property :username,     String, :length => 3..50
+  property :username,     String, :length => 3..50, :unique => true
+  property :role,         Enum[ :user, :admin ], :default => :user
   property :password,     BCryptHash
 
   has n, :notes
 
   def authenticate(attempted_password)
-    if self.password == attempted_password
-      true
-    else
-      false
-    end
+    self.password == attempted_password ? true : false
   end
 end

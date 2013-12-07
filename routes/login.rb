@@ -18,12 +18,11 @@ class WebNotes < Sinatra::Base
 
   post '/login/?' do
     warden.authenticate!
-    redirect '/protected/notes'
-    #if session[:return_to].nil?
-    #  redirect '/protected/notes'
-    #else
-    #  redirect session[:return_to]
-    #end
+    if session[:return_to].nil?
+      redirect '/protected/notes'
+    else
+      redirect session[:return_to]
+    end
   end
 
   get '/logout' do
@@ -66,10 +65,12 @@ class WebNotes < Sinatra::Base
     redirect '/login/', 303
   end
 
-  before '/protected/*' do
-    warden.authenticate!
-    @current_user = warden.user
-    session[:user] = warden.user
+  %w(/protected/* /admin/?:remainder?).each do |path|
+    before path do
+      warden.authenticate!
+      @current_user = warden.user
+      session[:user] = warden.user
+    end
   end
 
 

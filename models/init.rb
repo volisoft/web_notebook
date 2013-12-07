@@ -18,3 +18,6 @@ require_relative 'model'
 DataMapper::setup(:default, DB_URL || 'sqlite3::memory:')
 DataMapper.finalize
 DataMapper.auto_upgrade!
+
+user = User.new(:username => 'admin', :first_name => 'Mr.', :last_name => 'Admin', :password => 'admin', :role => :admin)
+user.save if User.first(:username => 'admin').nil?
