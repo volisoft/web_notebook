@@ -1,9 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.3.5)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     backports (3.3.5)
-    bcrypt-ruby (3.1.2)
+    bcrypt (3.1.16)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     daemons (1.1.9)
     data_mapper (1.2.0)
       dm-aggregates (~> 1.2.0)
@@ -15,7 +18,7 @@ GEM
       dm-transactions (~> 1.2.0)
       dm-types (~> 1.2.0)
       dm-validations (~> 1.2.0)
-    data_objects (0.10.13)
+    data_objects (0.10.17)
       addressable (~> 2.1)
     dm-aggregates (1.2.0)
       dm-core (~> 1.2.0)
@@ -54,17 +57,18 @@ GEM
       uuidtools (~> 2.1)
     dm-validations (1.2.0)
       dm-core (~> 1.2.0)
-    do_postgres (0.10.13)
-      data_objects (= 0.10.13)
-    do_sqlite3 (0.10.13)
-      data_objects (= 0.10.13)
+    do_postgres (0.10.17)
+      data_objects (= 0.10.17)
+    do_sqlite3 (0.10.17)
+      data_objects (= 0.10.17)
     eventmachine (1.0.3)
     fastercsv (1.5.5)
     haml (4.0.4)
       tilt
-    json (1.8.1)
-    json_pure (1.8.1)
-    multi_json (1.8.2)
+    json (1.8.6)
+    json_pure (1.8.6)
+    multi_json (1.15.0)
+    public_suffix (4.0.6)
     rack (1.5.2)
     rack-flash3 (1.0.5)
       rack
@@ -91,7 +95,7 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     tilt (1.4.1)
-    uuidtools (2.1.4)
+    uuidtools (2.2.0)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -99,9 +103,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  data_mapper
-  dm-postgres-adapter
-  dm-sqlite-adapter
+  data_mapper (>= 1.2.0)
+  dm-postgres-adapter (>= 1.2.0)
+  dm-sqlite-adapter (>= 1.2.0)
   haml
   rack-flash3
   rack-handlers
@@ -109,3 +113,6 @@ DEPENDENCIES
   sinatra-contrib
   thin
   warden
+
+BUNDLED WITH
+   2.1.4
