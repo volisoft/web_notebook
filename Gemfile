@@ -9,8 +9,8 @@ group :production, :staging do
   gem 'dm-postgres-adapter'
 end
 
-gem 'sinatra', require: 'sinatra/base', require: 'sinatra/namespace', require: 'sinatra/content_for'
-gem 'sinatra-contrib'
+gem 'sinatra', '>= 2.2.3', require: 'sinatra/base', require: 'sinatra/namespace', require: 'sinatra/content_for'
+gem 'sinatra-contrib', '>= 2.2.3'
 gem 'haml'
 gem 'rack-flash3', require: 'rack/flash'
 gem 'rack-handlers', require: 'rack/handler'
